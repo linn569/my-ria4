@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Untuk Kamu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ffe6eb;
+      font-family: 'Comic Sans MS', cursive;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .box {
+      background-color: #fff0f5;
+      border: 2px solid #ffc0cb;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      padding: 15px;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .box img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    .box.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.8);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .letter-content {
+      background-color: white;
+      padding: 30px;
+      max-width: 600px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      line-height: 1.6;
+      font-size: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #letterPage {
+      display: none; /* Tersembunyi awalnya */
+      background: linear-gradient(to top, #fefcea, #f1daff);
+      min-height: 100vh;
+      overflow: auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Kalau mau bisa scroll dengan lancar setelah muncul */
+    #letterPage.show {
+      display: block;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 0;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      opacity: 0.8;
+      animation: floatUp 4s linear infinite;
+      transform: rotate(-45deg);
+      pointer-events: none;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <center><p id="instruction">pencet semua gambarnya yaa sayang 💗</p></center>
+  <br>
+  <div class="container" id="container">
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/d4y1lIJ.jpg" />Hy my love</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/k9LQwEX.jpg" />Ini bukan apa-apa, cuma hadiah sederhana dari aku</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/nr4UU2o.jpg" />Susah dijelasin, tapi aku selalu baliknya ke kamu</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/LqR5Jcg.jpg" />Kamu cantik banget dari foto aja cantik byy sumpah</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/r2nXB4z.jpg" />Kamu satu-satunya alasan kenapa pulang selalu berarti</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/R3NmwD5.jpg" />Satu-satunya yang masuk akal di dunia ini ya cuma kamu byy</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/TYtIq31.jpg" />Dari semua yang nggak pasti, kamu juga yang paling jelas</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/ISqCi8P.jpg" />Kamu itu bukan kebetulan. Kamu itu pilihan</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/xfz99iB.jpg" />Gak pernah niat nyari yang lain. Soalnya udah nemu kamu</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/ZeSWX3M.jpg" />Kalau hati bisa milih tempat tinggal, aku pilih kamu</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/YeYkyeS.jpg" />Kalau hidup ini ribut, kamu tempat aku ngaso</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/Lj7Xdbi.jpg" />makasih udah mau tetep sama aku byy</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/UJOQEkr.jpg" />Aku kangen kamu, always 💗</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/mQfiDN7.jpg" />Kamu berhak bahagia cantik</div>
+    <div class="box" onclick="removeBox(this)"><img src="https://i.imgur.com/CbGpzcf.jpg" />Kamu istimewa buat aku </div>
+  </div>
+
+  <div id="letterPage">
+    <div class="letter-content">
+      <h2> byy maaf 💌 </h2>
+      <p>
+        mungkin buat kamu ini cuma omongkosong...<br><br>
+        byy, aku pengen minta maaf banget sama kamu. Aku sadar selama ini aku kurang bisa kasih waktu yang cukup buat kamu. Aku tahu kamu pasti sering nunggu kabar aku, tapi aku malah sibuk sama dunia aku yang kadang bikin aku hampir nggak ada waktu sama sekali. Kita LDR juga bikin semuanya jadi lebih berat buat aku ngajaga komunikasi. Aku gak mau kamu ngerasa aku cuek atau gak peduli, karena sebenarnya aku selalu mikirin kamu.
+        Akhir-akhir ini aku juga ngerasa cape banget sampe tadi pas kita call, aku malah bingung sendiri dan cuma bisa diem aja. Aku sadar itu bukan hal yang kamu butuhin, dan aku minta maaf karena nggak bisa jadi pendengar yang baik saat itu. Aku nggak mau kamu merasa sendirian atau dilupain. Kamu tuh penting juga buat aku, dan aku ingin kita tetap dekat walau jarak dan kesibukan terus ada.
+        aku bakal coba lebih baik lagi buat nyisihin waktu walaupun cuma sedikit, buat bilang halo, buat dengerin cerita kamu, dan buat bikin kamu ngerasa aku selalu ada di sisi kamu. Makasih karena udah sabar dan tetap setia sama aku. Aku sayang banget sama kamu byy.
+        Semoga kamu bisa ngerti dan maafin aku ya. Aku pengen kita tetap kuat, tetap saling support, dan terus jalan bareng meskipun tantangannya gak mudah. Aku di sini buat kamu, selalu.
+
+<br><br>
+        Sekali lagi maafin aku byy 💗
+      </p>
+      <button onclick="window.location.href='halaman2.html'" style="padding: 10px 20px; border: none; background-color: #ffc0cb; color: white; font-size: 16px; border-radius: 10px; cursor: pointer;">
+        Special message 💌
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const totalBox = 15;
+    let totalClicked = 0;
+
+    function removeBox(el) {
+      if(el.classList.contains("hidden")) return; // cegah klik berulang
+      el.classList.add("hidden");
+      totalClicked++;
+      if (totalClicked === totalBox) {
+        // Tampilkan letterPage
+        const letterPage = document.getElementById("letterPage");
+        letterPage.classList.add("show");
+
+        // Sembunyikan tulisan petunjuk dan kotak container
+        document.getElementById("instruction").style.display = "none";
+        document.getElementById("container").style.display = "none";
+
+        // Scroll otomatis ke letterPage
+        letterPage.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    // Hati melayang
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.bottom = '-20px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
